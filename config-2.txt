@@ -1,0 +1,7 @@
+# Enter config data here
+url=https://example.com/xxx
+town=Smalltown
+city=New York
+name=Mary
+phone=666666666
+myCry=Yowwwl!

@@ -7,14 +7,14 @@
 #include <vector>
 #include <map>
 
-namespace config
+class ConfigObject
 {
-    extern int myNum;
-    extern std::string some_config_string;
-    extern int lines;
-    extern std::map<std::string, std::string> values;
-
+    const char * configFilepath;
+    std::map<std::string, std::string> values;
+public:
+    ConfigObject(const char * configFilepath);
     bool loadConfigFromFile();
-}
+    std::map<std::string, std::string> getValues();
+};
 
 #endif

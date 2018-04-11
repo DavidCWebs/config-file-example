@@ -1,20 +1,16 @@
-#include "config.hpp"
-std::map<std::string, std::string> config::values;
+#include "ConfigObject.hpp"
 
-namespace config
-{
-    int myNum = 123;
-    std::string some_config_string = "foo";
-    int lines = 0;
+ConfigObject::ConfigObject(const char * inConfigFilepath) : configFilepath(inConfigFilepath) {
+    std::cout << "config file path " << configFilepath << std::endl;
+    loadConfigFromFile();
 }
 
-bool config::loadConfigFromFile()
+bool ConfigObject::loadConfigFromFile()
 {
-    const char * filepath = "./config.txt";
     std::string lines;
-    std::ifstream myFile(filepath);
+    std::ifstream myFile(configFilepath);
     if (!myFile) {
-        std::cout << "Error opening file " << filepath << std::endl;
+        std::cout << "Error opening file " << configFilepath << std::endl;
     }
     while (std::getline(myFile, lines)) {
         if (lines.empty() || lines.find("//") == 0 || lines.find("#") == 0)
@@ -29,8 +25,13 @@ bool config::loadConfigFromFile()
             std::string value;
             // Everything up to the newline assigned to value
             if(std::getline(lineStream, value))
-                config::values[key] = value;
+                values[key] = value;
         }
     }
     return true;
+}
+
+std::map<std::string, std::string> ConfigObject::getValues()
+{
+    return values;
 }
