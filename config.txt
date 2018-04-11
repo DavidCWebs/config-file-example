@@ -1,6 +1,6 @@
 # Enter config data here
-url=Cloonanass
-town=Feltham
+url=https://example.com
+town=Bigsville
 city=London
 name=Billy
 phone=012345677889
