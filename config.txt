@@ -1,0 +1,7 @@
+# Enter config data here
+url=Cloonanass
+town=Feltham
+city=London
+name=Billy
+phone=012345677889
+myCry=Yabbadabbadooooo!
